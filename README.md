@@ -1,6 +1,6 @@
  ABCDEFBDWS
 ================
-This is an extension of the ABCD (Access to Biological Collections Data) XML Schema produced at the Naturalis Data Enrichment Hackathon in Leiden (March 2014).
+This might become an extension of the ABCD (Access to Biological Collections Data) XML Schema produced at the Naturalis Data Enrichment Hackathon in Leiden (March 2014).
 
 The full acronym stands for:
 
@@ -20,11 +20,11 @@ The name will be changed once we can think of something better.
  The Task
 =======
 Our task was to design, implement and propagate a standard XML schema for describing web services in the Biodiversity domain. 
-The purpose of this would be to allow web service providers to describe their web services just once. If they require changing any information about their service (such as available methods, licensing, descriptions etc) they would be required to do this only once.
+The purpose of this would be to allow web service providers to document their web service just once. If they require changing any information about their service (such as available methods, licensing, descriptions etc) they would be required to do this only once.
 
 Web service catalogues and repositories such as the Biodiversity Catalogue (http://www.biodiversitycatalogue.org) would be able to retrieve and parse this file regularly to determine whether their information about the web service needs to be updated.
 
- The Solution
+Progress
 ========
 We oringally hoped to encapsulate both Technical (methods, operations, parameters etc) and Metadata (authors, institutions, projects etc) in one such document but this was not an obviously routine use case for WSDL documents and we lack the expertise to investigate in a restricted amount of hacking time.
 
@@ -38,13 +38,13 @@ For REST web services there are many tools available to service providers to gen
 
 Metadata Description
 --------------
-After brain-storming requirements about what would attributes would need to be 
+After brain-storming requirements about what attributes we would need, we went about finding out if there is an existing XSD that does what we want. We found ABCD met some (though far from all) of our requirements, and that extending the schema is both well-documented and encouraged by it's authors.   
 
 The ABCD schema is composed of two parts, the METADATA and the UNIT section. 
 The UNIT section is for describing data-sets and is of no interest to us.
 The METADATA part is useful as it is scientifically aware and contains many of the requirements needed by scientists to describe any artefact or tool including, in our case Web Services.
 
-The brief overview of metadata as it
+The brief overview of metadata
 METADATA
 - Description
 - Icon URI
@@ -57,7 +57,7 @@ METADATA
 To Do
 ----------
 * Come up with a sensible yet witty name
-* Extend the ABCD Schema
+* Extend the ABCD Schema or generate our own
 * Implement an online ABCDEFBDWS document generator
 * Implement an ABCDEFBDWS document parser
 
