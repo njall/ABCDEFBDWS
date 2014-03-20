@@ -5,7 +5,7 @@
 	<Name>a</Name>
 	<Type>SOAP</Type>
 	<TechnicalDocumentationURL>http://www.altova.com/</TechnicalDocumentationURL>
-	<GUIVersionURL>http://www.altova.com/</GUIVersionURL>
+	<GUIURL>http://www.altova.com/</GUIURL>
 	<Projects>
 		<Project>
 			<ProjectTitle language="en-us">a</ProjectTitle>
