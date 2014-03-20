@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- edited with XMLSpy v2014 rel. 2 (x64) (http://www.altova.com) by Niall Beard (MyGrid, University of Manchester) -->
+<!-- Niall Beard (MyGrid, University of Manchester)
+	 Patricia Kelbert (BGBM, Berlin)
+	Bachir Balech (IBBE, Bari) -->
+	<!-- Uses attribute definitions from the ABCD Schema http://www.bgbm.org/tdwg/codata/schema/ABCD_2.06/HTML/ABCD_2.06.html-->
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.example.org" targetNamespace="http://www.example.org" elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<xs:element name="WebService">
 		<xs:annotation>
@@ -193,26 +196,12 @@
 					<xs:sequence>
 						<xs:element name="Section" type="Section" maxOccurs="unbounded">
 							<xs:annotation>
-								<xs:documentation>Used where the IPR declaration cannot be parsed into the specific items or for forms of IPR declaration not yet covered  (e.g. database rights),</xs:documentation>
+								<xs:documentation>Each section is a description splitted into paragraphs each with a section title.</xs:documentation>
 							</xs:annotation>
 						</xs:element>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
-			<!--  <xs:element name="HERE THE EXAMPLES" minOccurs="0">
-                <xs:annotation>
-                    <xs:documentation>Container element for one to several statements, normally representing different language representations of the same content.</xs:documentation>
-                </xs:annotation>
-                <xs:complexType>
-                    <xs:sequence>
-                        <xs:element maxOccurs="unbounded" type="Statement" name="Copyright">
-                            <xs:annotation>
-                                <xs:documentation>Copyright may include the information that the data has been released to the public domain.</xs:documentation>
-                            </xs:annotation>
-                        </xs:element>
-                    </xs:sequence>
-                </xs:complexType>
-            </xs:element> -->
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="IPRStatements">
