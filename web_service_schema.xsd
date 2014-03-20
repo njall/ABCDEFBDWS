@@ -27,7 +27,7 @@
 						<xs:documentation>The URL to the technical documentation (WADL or WSDL)</xs:documentation>
 					</xs:annotation>
 				</xs:element>
-				<xs:element name="GUIVersionURL" type="xs:anyURI">
+				<xs:element name="GUIURL" type="xs:anyURI">
 					<xs:annotation>
 						<xs:documentation>The URL of an online User Interface to access the Web Service</xs:documentation>
 					</xs:annotation>
