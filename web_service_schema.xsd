@@ -1,0 +1,576 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.tdwg.org/schemas/abcd/2.06" attributeFormDefault="unqualified" xmlns="http://www.tdwg.org/schemas/abcd/2.06">
+	<xs:element name="WebService">
+		<xs:annotation>
+			<xs:documentation>Webservice documentation root element</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element type="String" name="baseURL" minOccurs="1">
+					<xs:annotation>
+						<xs:documentation>The baseURL for accessing the websevice</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element type="String" name="name" minOccurs="1">
+					<xs:annotation>
+						<xs:documentation>The name of the websevice</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element type="WebserviceTypeEnum" name="Type" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>The type of the webservice</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element type="String" name="technicalDocumentationURL" minOccurs="1">
+					<xs:annotation>
+						<xs:documentation>The URL to the technical documentation (WADL or WSDL)</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="Project" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Project information concerning webservice development or fundings.</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element type="StringL" name="ProjectTitle" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation>Title of project</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element type="Organisation" name="Organisation" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation>Organisation involved in the project.</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="Authors" minOccurs="0">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element maxOccurs="unbounded" name="Author" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation>Atomized record of team member who developed the webservice.</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element type="PersonName" name="PersonName" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation>Atomised data for the parts of the Author's name.</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="EmailAddresses" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation>E-mail addresses</xs:documentation>
+											</xs:annotation>
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element maxOccurs="unbounded" type="StringP255" name="EmailAddress" minOccurs="0">
+														<xs:annotation>
+															<xs:documentation>E-mail address for contact</xs:documentation>
+														</xs:annotation>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element type="Organisation" name="Organisation" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation>The Organisation the Author is affiliated with, or the Organisation (institution) acting as the author</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element type="IPRStatements" name="IPRStatements" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation xml:lang="en-us">Copyright, terms of use, license and other IPR-related statements like disclaimer or acknowledgement. Giving a copyright statement and a (if possible public) licence is highly recommended! (=DC.Rights)</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element type="Description" name="GlobalDescription" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation xml:lang="en-us">A general description of the webservice</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="Description">
+		<xs:annotation>
+			<xs:documentation>A sequence of documentation text and examples.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Sections" minOccurs="0">
+				<!-- see how to add the attributes -->
+				<xs:annotation>
+					<xs:documentation>Container element for one to several statements, normally representing different language representations of the same content.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element maxOccurs="unbounded" type="Section" name="Paragrah">
+							<xs:annotation>
+								<xs:documentation>Used where the IPR declaration cannot be parsed into the specific items or for forms of IPR declaration not yet covered  (e.g. database rights),</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<!--  <xs:element name="HERE THE EXAMPLES" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>Container element for one to several statements, normally representing different language representations of the same content.</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" type="Statement" name="Copyright">
+                            <xs:annotation>
+                                <xs:documentation>Copyright may include the information that the data has been released to the public domain.</xs:documentation>
+                            </xs:annotation>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element> -->
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="IPRStatements">
+		<xs:annotation>
+			<xs:documentation>A sequence of statements related to Intellectual Property Rights, credit and acknoledgement.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="IPRDeclarations" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Container element for one to several statements, normally representing different language representations of the same content.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element maxOccurs="unbounded" type="Statement" name="IPRDeclaration">
+							<xs:annotation>
+								<xs:documentation>Used where the IPR declaration cannot be parsed into the specific items or for forms of IPR declaration not yet covered  (e.g. database rights),</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Copyrights" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Container element for one to several statements, normally representing different language representations of the same content.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element maxOccurs="unbounded" type="Statement" name="Copyright">
+							<xs:annotation>
+								<xs:documentation>Copyright may include the information that the data has been released to the public domain.</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Licenses" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Container element for one to several statements, normally representing different language representations of the same content.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element maxOccurs="unbounded" type="Statement" name="License">
+							<xs:annotation>
+								<xs:documentation>To be used if data are placed under a public license (GPL, GFDL, OpenDocument). Placing data under a public license while maintaining copyright is recommended!</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="TermsOfUseStatements" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Container element for one to several statements, normally representing different language representations of the same content.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element maxOccurs="unbounded" type="Statement" name="TermsOfUse">
+							<xs:annotation>
+								<xs:documentation>Defines conditions under which the data may be analised, distributed or changed. "Terms of use" includes concepts like "Usage conditions" and "Specific Restrictions".</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Disclaimers" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Container element for one to several statements, normally representing different language representations of the same content.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element maxOccurs="unbounded" type="Statement" name="Disclaimer">
+							<xs:annotation>
+								<xs:documentation>Disclaimer statement, e. g. concerning responsibility for data quality or legal implications.</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Acknowledgements" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Container element for one to several statements, normally representing different language representations of the same content.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element maxOccurs="unbounded" type="Statement" name="Acknowledgement">
+							<xs:annotation>
+								<xs:documentation>A free form text acknowledging support (e. g. grant money, help, permission to reuse published material, etc.)</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Citations" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Container element for one to several statements, normally representing different language representations of the same content.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element type="Statement" name="Citation">
+							<xs:annotation>
+								<xs:documentation>Indicates how this dataset or record should be attributed if used [OBIF 1.0]</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Statement">
+		<xs:annotation>
+			<xs:documentation xml:lang="en-us">Text, optional Details (both free-form text) and optional URI.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element type="String" name="Text">
+				<xs:annotation>
+					<xs:documentation xml:lang="en-us">A concise representation of a statement, recommended to be as short as possible, but actual length is unconstrained.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element type="String" name="Details" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en-us">Optional text of unconstrained length, elaborating details of the ShortText</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element type="xs:anyURI" name="URI" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en-us">An optional resource on the net providing details on the statement (may be used as an alternative to the long text).</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute use="required" type="xs:language" name="language"/>
+	</xs:complexType>
+	<xs:simpleType name="String">
+		<xs:annotation>
+			<xs:documentation xml:lang="en-us">normalized string required to contain at least 1 character (this removes the xml string anomaly, i. e. either element/attribute may be optional, but if they are required the content may not be an empty string)</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:normalizedString">
+			<xs:minLength fixed="false" value="1"/>
+			<xs:whiteSpace fixed="false" value="collapse"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="WebserviceTypeEnum">
+		<xs:annotation>
+			<xs:documentation>An enumeration of the kinds of webservices</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:Name">
+			<xs:enumeration value="SOAP"/>
+			<xs:enumeration value="REST"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="StringL">
+		<xs:annotation>
+			<xs:documentation>String (i. e. xs:string with minimum length=1) extended with language attribute</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:extension base="String">
+				<xs:attribute use="optional" type="xs:language" name="language"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="Contact">
+		<xs:annotation>
+			<xs:documentation>Contact details.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element type="Organisation" name="Organisation" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Organisation to contact</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element type="PersonName" name="Person" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Person to contact</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Roles" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element maxOccurs="unbounded" type="StringL" name="Role">
+							<xs:annotation>
+								<xs:documentation>Analogue to vCard:Role: Functional contact name, e.g. "Database administrator", "The Director", etc.</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Addresses" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Contact addresses (one preferred, different languages possible)</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element maxOccurs="unbounded" type="StringLP" name="Address" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation>Contact address as string.</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="TelephoneNumbers" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Telephone and fax numbers</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element maxOccurs="unbounded" type="TelephoneNumber" name="TelephoneNumber" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation>Telephone or fax number</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="EmailAddresses" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>E-mail addresses</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element maxOccurs="unbounded" type="StringP255" name="EmailAddress" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation>E-mail address for contact</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="URIs" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>URIs for person or organisation</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element maxOccurs="unbounded" type="anyUriP" name="URL" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation>URI for person or organisation</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element type="xs:anyURI" name="LogoURI" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>URL of a logo image.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Organisation">
+		<xs:sequence>
+			<xs:element type="Label" name="Name">
+				<xs:annotation>
+					<xs:documentation xml:lang="en-us">Full organization or corporate name in multiple languages (en: 'Botanical Garden of ...', de: 'Botanischer Garten von ...'). vCard:Org.OrgName). The Label mechanism also supports acronyms / abbreviations (no vCard equivalent!).</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="OrgUnits" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en-us">If the contact contains no person definition: the unit within the organization the agent represents; else a list of the various organisational units to which a person may belong. (vCard:OrgUnit)</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element maxOccurs="unbounded" type="StringL" name="OrgUnit">
+							<xs:annotation>
+								<xs:documentation xml:lang="en-us">(vCard:OrgUnit)</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="anyUriP">
+		<xs:annotation>
+			<xs:documentation>xs:anyURI extended with Preferred attribute</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:extension base="xs:anyURI">
+				<xs:attribute use="optional" type="xs:boolean" name="preferred"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="Label">
+		<xs:annotation>
+			<xs:documentation xml:lang="en-us">Collection of language-specific label representations</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element maxOccurs="unbounded" name="Representation">
+				<xs:annotation>
+					<xs:documentation xml:lang="en-us">Language-specific label representation
+[ATTR: language]</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:complexContent>
+						<xs:extension base="LabelRepr"/>
+					</xs:complexContent>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="LabelRepr">
+		<xs:annotation>
+			<xs:documentation xml:lang="en-us">Language-specific simple label, using simple formatted text</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element type="String255" name="Text">
+				<xs:annotation>
+					<xs:documentation xml:lang="en-us">Label text in a specific language.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element type="String50" name="Abbreviation" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en-us">Restricted to 50 characters maximum length, including blanks (recommended to be shorter!). Label abbreviations are especially important when displaying information in a tabular format.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute use="required" type="xs:language" name="language"/>
+	</xs:complexType>
+	<xs:complexType name="TelephoneNumber">
+		<xs:annotation>
+			<xs:documentation>Telephone or Fax number</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element type="String255" name="Number">
+				<xs:annotation>
+					<xs:documentation>Full number in standard international format</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element type="TelephoneDevice" name="Device" minOccurs="0"/>
+			<xs:element type="StringL" name="UsageNotes" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Free text for constraints on use e.g. "weekdays only" or "home number"</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute default="false" use="optional" type="xs:boolean" name="preferred"/>
+	</xs:complexType>
+	<xs:complexType name="TelephoneDevice">
+		<xs:annotation>
+			<xs:documentation>Type of device reached by telephone number, e.g. voice, fax, voice/fax</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:extension base="xs:Name"/>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="StringLP">
+		<xs:annotation>
+			<xs:documentation>String (i. e. xs:string with minimum length=1) extended with language and preferred attribute</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:extension base="String">
+				<xs:attribute use="optional" type="xs:language" name="language"/>
+				<xs:attribute use="optional" type="xs:boolean" name="preferred"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:simpleType name="String255">
+		<xs:annotation>
+			<xs:documentation xml:lang="en-us">normalized string restricted to 1..255 character length (i. e. required, may not be empty string)</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:normalizedString">
+			<xs:minLength fixed="true" value="1"/>
+			<xs:maxLength fixed="true" value="255"/>
+			<xs:whiteSpace fixed="false" value="collapse"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="StringP255">
+		<xs:annotation>
+			<xs:documentation>String255 (i.e. xs:string with length 1-255), extended with preferred attribute</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:extension base="String255">
+				<xs:attribute use="optional" type="xs:boolean" name="preferred"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:simpleType name="Section">
+		<xs:annotation>
+			<xs:documentation>TODO</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:normalizedString">
+			<xs:minLength fixed="true" value="1"/>
+			<!--xs:maxLength fixed="false"/-->
+			<xs:whiteSpace fixed="false" value="collapse"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="String50">
+		<xs:annotation>
+			<xs:documentation xml:lang="en-us">normalized string restricted to 1..50 character length to be used for abbreviations (the recommended length of abbreviations is usually much shorter, but 50 characters should be a</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:normalizedString">
+			<xs:minLength fixed="true" value="1"/>
+			<xs:maxLength fixed="true" value="50"/>
+			<xs:whiteSpace fixed="false" value="collapse"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="PersonName">
+		<xs:annotation>
+			<xs:documentation>Name of an individual person</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element type="String255" name="FullName">
+				<xs:annotation>
+					<xs:documentation>Preferred form of personal name for display as a string.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element type="String255" name="SortingName" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>The full name with the elements in preferred sorting sequence (vCard: Sort-String).</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="AtomisedName" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element type="String255" name="InheritedName">
+							<xs:annotation>
+								<xs:documentation xml:lang="en-us">Family names, generational names, clan name, parents/grandparents personal names, etc. This (= last name in western cultures) may be compound ('Fischer von Waldheim', 'da Selva', 'Silvano Morales'). Depending on culture it is not necessarily the name of the parents nor common to the married couple and children, thus 'family name' should be avoided even though used in vCard.  (vCard:N.Family)</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element type="String255" name="Prefix" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation xml:lang="en-us">Prefix to inherited name that should be output before name, but is usually not included in sorting. Examples: 'von', 'Lord'. Compare Title for 'Prof', 'Dr.' (vCard:N.Prefix)</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element type="String255" name="Suffix" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation xml:lang="en-us">Suffix to name that should be output after name, regardless whether it is in sorting sequence (Inherited, Given) or not. Examples: 'Jun.', 'III.'. (vCard:N.Suffix)</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element type="String255" name="GivenNames" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation xml:lang="en-us">The name given to a person as a personal name (= first or christian name in western cultures, including 'middle initials') may contain several words ('Ana Maria', 'Jerry B.'). Applicable only to persons. (vCard:N.Given + vCard:N.Middle)</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element type="String255" name="PreferredName" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation xml:lang="en-us">May differ from the first given name: second given name, nickname ('Bob' for 'Robert'), etc. (vCard:Nickname)</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>
