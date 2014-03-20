@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2014 rel. 2 (x64) (http://www.altova.com) by Niall Beard (MyGrid, University of Manchester) -->
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.tdwg.org/schemas/abcd/2.06" targetNamespace="http://www.tdwg.org/schemas/abcd/2.06" elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<xs:element name="WebService">
 		<xs:annotation>
@@ -105,11 +106,79 @@
 						<xs:documentation xml:lang="en-us">A general description of the webservice</xs:documentation>
 					</xs:annotation>
 				</xs:element>
-				<xs:element name="Categories" type="Categories" minOccurs="0">
+				<xs:element name="Functions" type="Functions" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation xml:lang="en-us">The functions (operation or methods) provided by the webservice.
+            </xs:documentation>
+					</xs:annotation>
 				</xs:element>
+				<xs:element name="Categories" type="Categories" minOccurs="0"/>
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
+	<xs:complexType name="Functions">
+		<xs:annotation>
+			<xs:documentation>Functions of the webservice
+      </xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Function" type="Function" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>a function
+          </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Function">
+		<xs:annotation>
+			<xs:documentation xml:lang="en-us"> function </xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Name" type="String">
+				<xs:annotation>
+					<xs:documentation xml:lang="en-us">The name of the function </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Description" type="Description" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en-us">A description of the function</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Examples" type="Example" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en-us">An example</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Example">
+		<xs:annotation>
+			<xs:documentation xml:lang="en-us">An example
+      </xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Request" type="String">
+				<xs:annotation>
+					<xs:documentation xml:lang="en-us">A request example
+          </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Response" type="String" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en-us">A response example
+          </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Comment" type="String" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en-us">A comment for this particular example.
+          </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="language" type="xs:language" use="required"/>
+	</xs:complexType>
 	<xs:complexType name="Description">
 		<xs:annotation>
 			<xs:documentation>A sequence of documentation text and examples.</xs:documentation>
