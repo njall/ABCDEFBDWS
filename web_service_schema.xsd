@@ -610,16 +610,35 @@
 			</xs:extension>
 		</xs:simpleContent>
 	</xs:complexType>
-	<xs:simpleType name="Section">
+	<xs:complexType name="Section">
 		<xs:annotation>
-			<xs:documentation>TODO</xs:documentation>
+			<xs:documentation>String (i. e. xs:string with minimum length=1)
+        extended with language attribute
+      </xs:documentation>
 		</xs:annotation>
-		<xs:restriction base="xs:normalizedString">
-			<xs:minLength value="1" fixed="true"/>
-			<xs:whiteSpace value="collapse" fixed="false"/>
-			<!--xs:maxLength fixed="false"/-->
-		</xs:restriction>
-	</xs:simpleType>
+		<xs:simpleContent>
+			<xs:extension base="StringP">
+				<xs:annotation>
+					<xs:documentation>A paragraph describing the webservice, with
+            header sections
+          </xs:documentation>
+				</xs:annotation>
+				<xs:attribute name="sectionName" type="xs:string"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="StringP">
+		<xs:annotation>
+			<xs:documentation>String (i. e. xs:string with minimum length=1)
+        extended with header attribute
+      </xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:extension base="String">
+				<xs:attribute name="header" type="String255" use="optional"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
 	<xs:simpleType name="String50">
 		<xs:annotation>
 			<xs:documentation xml:lang="en-us">normalized string restricted to 1..50 character length to be used for abbreviations (the recommended length of abbreviations is usually much shorter, but 50 characters should be a</xs:documentation>
