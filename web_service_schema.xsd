@@ -9,12 +9,12 @@
 			<xs:sequence>
 				<xs:element name="BaseURL" type="xs:anyURI" minOccurs="1">
 					<xs:annotation>
-						<xs:documentation>The baseURL for accessing the websevice</xs:documentation>
+						<xs:documentation>The baseURL for accessing the webservice</xs:documentation>
 					</xs:annotation>
 				</xs:element>
 				<xs:element name="Name" type="String" minOccurs="1">
 					<xs:annotation>
-						<xs:documentation>The name of the websevice</xs:documentation>
+						<xs:documentation>The name of the webservice</xs:documentation>
 					</xs:annotation>
 				</xs:element>
 				<xs:element name="Type" type="WebserviceTypeEnum">
@@ -191,7 +191,7 @@
 				<!-- see how to add the attributes -->
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="Paragrah" type="Section" maxOccurs="unbounded">
+						<xs:element name="Section" type="Section" maxOccurs="unbounded">
 							<xs:annotation>
 								<xs:documentation>Used where the IPR declaration cannot be parsed into the specific items or for forms of IPR declaration not yet covered  (e.g. database rights),</xs:documentation>
 							</xs:annotation>
@@ -623,7 +623,6 @@
             header sections
           </xs:documentation>
 				</xs:annotation>
-				<xs:attribute name="sectionName" type="xs:string"/>
 			</xs:extension>
 		</xs:simpleContent>
 	</xs:complexType>
@@ -635,7 +634,7 @@
 		</xs:annotation>
 		<xs:simpleContent>
 			<xs:extension base="String">
-				<xs:attribute name="header" type="String255" use="optional"/>
+				<xs:attribute name="SectionTitle" type="String255" use="optional"/>
 			</xs:extension>
 		</xs:simpleContent>
 	</xs:complexType>
