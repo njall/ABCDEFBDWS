@@ -1,34 +1,22 @@
- ABCDEFBDWS
+ XS-SWeDe
 ================
-This might become an extension of the ABCD (Access to Biological Collections Data) XML Schema produced at the Naturalis Data Enrichment Hackathon in Leiden (March 2014).
-
-The full acronym stands for:
-
-Access to 
-Biological 
-Collections 
-Data 
-Extension 
-For 
-Bio 
-Diversity 
-Web 
-Services
-
-The name will be changed once we can think of something better.
+This is the XML Schema for Scientific WEbservice DEscriptions produced at the Naturalis Data Enrichment Hackathon in Leiden (March 2014).
 
  The Task
 =======
 Our task was to design, implement and propagate a standard XML schema for describing web services in the Biodiversity domain. 
-The purpose of this would be to allow web service providers to document their web service just once. If they require changing any information about their service (such as available methods, licensing, descriptions etc) they would be required to do this only once.
+The purpose of this would be to allow web service providers to document their web service just once rather than maintaining documentations on several different platforms. If they require changing any information about their service (such as available methods, licensing, descriptions etc) they would be required to do this only once.
 
 Web service catalogues and repositories such as the Biodiversity Catalogue (http://www.biodiversitycatalogue.org) would be able to retrieve and parse this file regularly to determine whether their information about the web service needs to be updated.
 
 Progress
 ========
+Rather than producing a schema specific to biodiversity web services we have made it generic to be used for describing any web services in any scientific domain.
+
+
 We oringally hoped to encapsulate both Technical (methods, operations, parameters etc) and Metadata (authors, institutions, projects etc) in one such document but this was not an obviously routine use case for WSDL documents and we lack the expertise to investigate in a restricted amount of hacking time.
 
-As such, Technical specification documents will be kept separate from Metadata.
+As such, Technical specification documents (WSDL/WADL) will be kept separate from Metadata (SWeDe).
 
 Technical Descriptions
 -----------
@@ -42,19 +30,22 @@ After brain-storming requirements about what attributes we would need, we went a
 
 The ABCD schema is composed of two parts, the METADATA and the UNIT section. 
 The UNIT section is for describing data-sets and is of no interest to us.
-The METADATA part is useful as it is scientifically aware and contains many of the requirements needed by scientists to describe any artefact or tool including, in our case Web Services.
+The METADATA part is useful as it is scientifically aware and contains many of the requirements needed by scientists to describe any artefact or tool including, in our case, Web Services.
 
-The brief overview of metadata
-METADATA
-- Description
-- Icon URI
-- Scope (Geo-ecological and Taxonomic)
-- Version
-- Revision data (Creator, Contributors, Creation and Modification dates)
-- Owners
-- Intellectual Property Rights (IPR) statements
-
-To Do
+The brief overview of our schema
+WebService
+- BaseURL
+- Name
+- Type
+- TechnicalDocumentationURL
+- GUIURL
+- Projects
+- Authors
+- IPRStatements
+- GlobalDescription
+- Functions
+- Categories
+Tasks
 ----------
 * Come up with a sensible yet witty name
 * Extend the ABCD Schema or generate our own
