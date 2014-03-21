@@ -1,6 +1,10 @@
- XS-SWeDe
+ XS-SWeDe Overview
 ================
-This is the XML Schema for Scientific WEbservice DEscriptions produced at the Naturalis Data Enrichment Hackathon in Leiden (March 2014).
+This is the XML Schema, Example XML file, and XML Generator page for the Scientific WEbservice DEscriptions project produced at the Naturalis Data Enrichment Hackathon in Leiden (March 2014).
+
+You can now use the SWeDe-Farmer page to generate your very own SWeDe.
+
+http://swede-farmer.herokuapp.com/
 
  The Task
 =======
