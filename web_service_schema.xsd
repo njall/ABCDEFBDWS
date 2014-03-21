@@ -25,7 +25,7 @@
 						<xs:documentation>The type of the webservice</xs:documentation>
 					</xs:annotation>
 				</xs:element>
-				<xs:element name="TechnicalDocumentationURL" type="xs:anyURI" minOccurs="1">
+				<xs:element name="TechnicalDocumentationURL" type="xs:anyURI" minOccurs="0">
 					<xs:annotation>
 						<xs:documentation>The URL to the technical documentation (WADL or WSDL)</xs:documentation>
 					</xs:annotation>
@@ -114,12 +114,12 @@
 						<xs:documentation>The functions (operation or methods) provided by the webservice.</xs:documentation>
 					</xs:annotation>
 				</xs:element>
-				<xs:element name="ScientificCategories" type="Categories" minOccurs="0">
+				<xs:element name="ScientificCategories" type="Categories" minOccurs="1">
 					<xs:annotation>
 						<xs:documentation>Scientific categories of the service e.g. Phylogenetics, Genome Sequencing etc</xs:documentation>
 					</xs:annotation>
 				</xs:element>
-				<xs:element name="TechnologyCategories" type="Categories" minOccurs="0">
+				<xs:element name="TechnologyCategories" type="Categories" minOccurs="1">
 					<xs:annotation>
 						<xs:documentation>Technological categories of the service e.g. SPARQL lookup, GeoMapper etc</xs:documentation>
 					</xs:annotation>
@@ -144,7 +144,7 @@
 			<xs:documentation>The category of the web service in the contexts of both Technical and Scientific e.g. Database access and Phylogenetic respectively</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
-			<xs:element name="Category" minOccurs="0" maxOccurs="unbounded"></xs:element>
+			<xs:element name="Category" minOccurs="1" maxOccurs="unbounded"></xs:element>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="Category">
@@ -152,7 +152,7 @@
 			<xs:documentation>A term to describe what category a web service is.</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
-			<xs:element name="CategoryName" minOccurs="0" type="String"></xs:element>
+			<xs:element name="CategoryName" minOccurs="1" type="String"></xs:element>
 		</xs:sequence>	
 	</xs:complexType>
 	<xs:complexType name="Function">
