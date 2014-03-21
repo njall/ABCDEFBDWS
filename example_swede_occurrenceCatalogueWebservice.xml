@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Niall Beard (MyGrid, University of Manchester) Patricia Kelbert (BGBM, 
+  Berlin) Bachir Balech (IBBE, Bari) -->
+<!-- Uses attribute definitions from the ABCD Schema http://www.bgbm.org/tdwg/codata/schema/ABCD_2.06/HTML/ABCD_2.06.html -->
+<WebService xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="web_service_schema.xsd">
+  <BaseURL>http://dev.e-taxonomy.eu/cdmserver/col/occurrence_catalogue.json</BaseURL>
+  <Name>Occurrence catalogue</Name>
+  <Type>REST</Type>
+  <TechnicalDocumentationURL>someURL</TechnicalDocumentationURL>
+  <GUIURL></GUIURL>
+  <Projects>
+    <Project>
+      <ProjectTitle >proiBiosphere Hackathon</ProjectTitle>
+      <Organisations>
+      <Organisation>
+        <Name>
+          <Representation >
+            <Text>Botanic Garden and Botanical Museum Berlin Dahlem</Text>
+            <Abbreviation>BGBM</Abbreviation>
+          </Representation>
+        </Name>
+      </Organisation>
+       </Organisations>
+    </Project>
+  </Projects>
+  <Authors>
+    <Author>
+      <PersonName>
+        <FullName>Patricia Kelbert</FullName>
+      </PersonName>
+      <EmailAddresses>
+        <EmailAddress preferred="true">p.kelbert@bgbm.org</EmailAddress>
+      </EmailAddresses>
+      <Organisations>
+      <Organisation>
+        <Name>
+          <Representation >
+            <Text>Botanic Garden and botanical Museum Berlin Dahlem</Text>
+            <Abbreviation>BGBM</Abbreviation>
+          </Representation>
+        </Name>
+      </Organisation>
+      </Organisations>
+    </Author>
+  </Authors>
+  <GlobalDescription>
+    <Sections>
+      <Section SectionTitle="General">The search is based on a single Taxon UUID, that can be obtained from the Name-Catalogue webservice (CDM). 
+      </Section>
+       <Section SectionTitle="Ouput">
+       It ouputs a JSON document, that contains all elements needed for the BioVel refinement workflow 
+       <![CDATA[https://wiki.biovel.eu/display/doc/Preparing+your+input+data+for+Data+Refinement+v14]]>
+       To prevent any memory overload, both on server and client side, a paging system is used. It is recommended to set the pageSize to maximum 200. The default value has been set to 50 occurrences per page.
+      </Section>
+    </Sections>
+  </GlobalDescription>
+  <Functions>
+    <Function>
+      <Name>doGetOccurrenceSearch</Name>
+      <Description>
+        <Sections>
+          <Section SectionTitle="General">Retrieves a list of occurrences
+            (specimen and observation) for a specific Taxon UUID. The
+            Taxon UUID can be obtained using the Name Catalogue
+            webservice.</Section>
+        </Sections>
+      </Description>
+      <Examples >
+      <Example>
+        <Request>
+          <![CDATA[
+     http://localhost:8070/occurrence_catalogue.json?query=85234ff5-8e40-4813-8f06-44ab960a905a&pageNumber=0&pageSize=50
+     ]]>
+        </Request>
+        <Response>
+        <![CDATA[
+        {
+    "count": 2267,
+    "currentIndex": 0,
+    "firstRecord": 1,
+    "indices": [
+        0,
+        1,
+        2
+    ],
+    "lastRecord": 50,
+    "nextIndex": 1,
+    "pageSize": 50,
+    "pagesAvailable": 46,
+    "prevIndex": 0,
+    "records": [
+        {
+            "acceptedTaxon": "Chenopodium vulvaria L.",
+            "accessionNumber": "",
+            "barcode": "",
+            "catalogNumber": "",
+            "collection": "",
+            "collector": "William Curtis",
+            "country": "Great Britain",
+            "dataResourceCitation": "",
+            "dataResourceRights": "",
+            "dateBegin": "1799",
+            "dateEnd": "",
+            "dateFromPublication": false,
+            "depth": "",
+            "elevation": "",
+            "errorRadius": "30000",
+            "fieldNotes": "",
+            "fieldNumber": "",
+            "institution": "",
+            "kindOfUnit": "",
+            "latitude": "-0.1275",
+            "locality": "London",
+            "longitude": "51.507222",
+            "maxDepth": "",
+            "maxElevation": "",
+            "nameUUID": "85234ff5-8e40-4813-8f06-44ab960a905a",
+            "referenceSystem": "Google Earth",
+            "sources": [ ],
+            "specimenOrObservationType": "PreservedSpecimen",
+            "title": "Great Britain, London, 51°30'25.999\"N, 0°7'39\"W (Google Earth), 1799, William Curtis.",
+            "unitCount": ""
+        }]]>
+        </Response>
+        <Comment>The pagenumber and pagesize attributes are not mandatory.</Comment>
+      </Example>
+      </Examples>
+    </Function>
+  </Functions>
+ <ScientificCategories>
+        <Category>CDM</Category>
+        <Category>Occurrences</Category>
+    </ScientificCategories>
+    <TechnologyCategories>
+        <Category>CDM</Category>
+        <Category>Java Hibernate technology</Category>
+    </TechnologyCategories>
+</WebService>
