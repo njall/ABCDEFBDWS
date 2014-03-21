@@ -49,7 +49,7 @@
 												<xs:documentation>Title of project</xs:documentation>
 											</xs:annotation>
 										</xs:element>
-										<xs:element name="Organisation" type="Organisation" minOccurs="0" maxOccurs="unbounded">
+										<xs:element name="Organisations" type="Organisations" minOccurs="0" maxOccurs="unbounded">
 											<xs:annotation>
 												<xs:documentation>Organisation involved in the project.</xs:documentation>
 											</xs:annotation>
@@ -88,7 +88,7 @@
 												</xs:sequence>
 											</xs:complexType>
 										</xs:element>
-										<xs:element name="Organisation" type="Organisation" minOccurs="0" maxOccurs="unbounded">
+										<xs:element name="Organisations" type="Organisations" minOccurs="0">
 											<xs:annotation>
 												<xs:documentation>The Organisation the Author is affiliated with, or the Organisation (institution) acting as the author</xs:documentation>
 											</xs:annotation>
@@ -375,17 +375,7 @@
 			<xs:documentation>Contact details.</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
-			<xs:element name="Organisations" minOccurs="0">
-				<xs:complexType>
-					<xs:sequence>
-						<xs:element name="Organisation" type="Organisation" minOccurs="0" maxOccurs="unbounded">
-							<xs:annotation>
-								<xs:documentation>Organisation to contact</xs:documentation>
-							</xs:annotation>
-						</xs:element>
-					</xs:sequence>
-				</xs:complexType>
-			</xs:element>
+			<xs:element name="Organisations" type="Organisations" minOccurs="0"/>
 			<xs:element name="Person" type="PersonName" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>Person to contact</xs:documentation>
@@ -461,6 +451,15 @@
 			<xs:element name="LogoURI" type="xs:anyURI" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>URL of a logo image.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Organisations">
+		<xs:sequence>
+			<xs:element name="Organisation" type="Organisation" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Organisational unit such as Research Group or University</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 		</xs:sequence>

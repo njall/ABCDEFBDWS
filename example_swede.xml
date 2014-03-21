@@ -3,23 +3,25 @@
 <WebService xmlns="http://www.example.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.example.org web_service_schema.xsd">
 	<BaseURL>http://www.altova.com/</BaseURL>
 	<Name>a</Name>
-	<Type>SOAP</Type>
+	<Type>REST</Type>
 	<TechnicalDocumentationURL>http://www.altova.com/</TechnicalDocumentationURL>
 	<GUIURL>http://www.altova.com/</GUIURL>
 	<Projects>
 		<Project>
 			<ProjectTitle>a</ProjectTitle>
-			<Organisation>
-				<Name>
-					<Representation>
-						<Text>a</Text>
-						<Abbreviation>a</Abbreviation>
-					</Representation>
-				</Name>
-				<OrgUnits>
-					<OrgUnit>a</OrgUnit>
-				</OrgUnits>
-			</Organisation>
+			<Organisations>
+				<Organisation>
+					<Name>
+						<Representation>
+							<Text>a</Text>
+							<Abbreviation>a</Abbreviation>
+						</Representation>
+					</Name>
+					<OrgUnits>
+						<OrgUnit>a</OrgUnit>
+					</OrgUnits>
+				</Organisation>
+			</Organisations>
 		</Project>
 	</Projects>
 	<Authors>
@@ -38,17 +40,19 @@
 			<EmailAddresses>
 				<EmailAddress preferred="true">a</EmailAddress>
 			</EmailAddresses>
-			<Organisation>
-				<Name>
-					<Representation>
-						<Text>a</Text>
-						<Abbreviation>a</Abbreviation>
-					</Representation>
-				</Name>
-				<OrgUnits>
-					<OrgUnit>a</OrgUnit>
-				</OrgUnits>
-			</Organisation>
+			<Organisations>
+				<Organisation>
+					<Name>
+						<Representation>
+							<Text>a</Text>
+							<Abbreviation>a</Abbreviation>
+						</Representation>
+					</Name>
+					<OrgUnits>
+						<OrgUnit>a</OrgUnit>
+					</OrgUnits>
+				</Organisation>
+			</Organisations>
 		</Author>
 	</Authors>
 	<IPRStatements>
