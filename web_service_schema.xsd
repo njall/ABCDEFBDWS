@@ -123,7 +123,7 @@
 					<xs:annotation>
 						<xs:documentation>Technological categories of the service e.g. SPARQL lookup, GeoMapper etc</xs:documentation>
 					</xs:annotation>
-				</xs:element>	
+				</xs:element>
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -141,19 +141,18 @@
 	</xs:complexType>
 	<xs:complexType name="Categories">
 		<xs:annotation>
-			<xs:documentation>The category of the web service in the contexts of both Technical and Scientific e.g. Database access and Phylogenetic respectively</xs:documentation>
+			<xs:documentation>The category of the web service in the contexts
+        of both Technical and Scientific e.g. Database access and
+        Phylogenetic respectively</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
-			<xs:element name="Category" minOccurs="1" maxOccurs="unbounded"></xs:element>
+			<xs:element name="Category" type="String" minOccurs="1" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>A term to describe what category a web
+            service is.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
 		</xs:sequence>
-	</xs:complexType>
-	<xs:complexType name="Category">
-		<xs:annotation>
-			<xs:documentation>A term to describe what category a web service is.</xs:documentation>
-		</xs:annotation>
-		<xs:sequence>
-			<xs:element name="CategoryName" minOccurs="1" type="String"></xs:element>
-		</xs:sequence>	
 	</xs:complexType>
 	<xs:complexType name="Function">
 		<xs:annotation>
@@ -182,7 +181,7 @@
 			<xs:documentation>A collection of examples to help show how to use a web service.</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
-			<xs:element name="Example" type="Example" maxOccurs="unbounded"></xs:element>
+			<xs:element name="Example" type="Example" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="Example">
@@ -201,7 +200,7 @@
 				<xs:annotation>
 					<xs:documentation>A comment for this particular example.</xs:documentation>
 				</xs:annotation>
-			</xs:element>	
+			</xs:element>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="Description">
@@ -307,7 +306,7 @@
 				</xs:annotation>
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="Acknowledgement" type="Statement" minOccurs="0"  maxOccurs="unbounded">
+						<xs:element name="Acknowledgement" type="Statement" minOccurs="0" maxOccurs="unbounded">
 							<xs:annotation>
 								<xs:documentation>A free form text acknowledging support (e. g. grant money, help, permission to reuse published material, etc.)</xs:documentation>
 							</xs:annotation>
@@ -336,7 +335,7 @@
 			<xs:documentation>Text, optional Details (both free-form text) and optional URI.</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
-			<xs:element name="Text" type="String" minOccurs="0" >
+			<xs:element name="Text" type="String" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>A concise representation of a statement, recommended to be as short as possible, but actual length is unconstrained.</xs:documentation>
 				</xs:annotation>
@@ -468,7 +467,7 @@
 	</xs:complexType>
 	<xs:complexType name="Organisation">
 		<xs:sequence>
-			<xs:element name="Name" type="Label" minOccurs="0" >
+			<xs:element name="Name" type="Label" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>Full organization or corporate name in multiple languages (en: 'Botanical Garden of ...', de: 'Botanischer Garten von ...'). vCard:Org.OrgName). The Label mechanism also supports acronyms / abbreviations (no vCard equivalent!).</xs:documentation>
 				</xs:annotation>
@@ -479,7 +478,7 @@
 				</xs:annotation>
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="OrgUnit" type="String" maxOccurs="unbounded" minOccurs="0" >
+						<xs:element name="OrgUnit" type="String" maxOccurs="unbounded" minOccurs="0">
 							<xs:annotation>
 								<xs:documentation>(vCard:OrgUnit)</xs:documentation>
 							</xs:annotation>
@@ -504,7 +503,7 @@
 			<xs:documentation>Collection of language-specific label representations</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
-			<xs:element name="Representation" minOccurs="0"  maxOccurs="unbounded">
+			<xs:element name="Representation" minOccurs="0" maxOccurs="unbounded">
 				<xs:annotation>
 					<xs:documentation>Language-specific label representation
 [ATTR: language]</xs:documentation>
@@ -522,7 +521,7 @@
 			<xs:documentation>Language-specific simple label, using simple formatted text</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
-			<xs:element name="Text" type="String255" minOccurs="0" >
+			<xs:element name="Text" type="String255" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>Label text in a specific language.</xs:documentation>
 				</xs:annotation>
